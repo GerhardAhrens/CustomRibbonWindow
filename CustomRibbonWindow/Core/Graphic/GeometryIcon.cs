@@ -14,8 +14,10 @@
 //-----------------------------------------------------------------------
 
 
-namespace CustomRibbonWindow.GeneralBaseClass
+namespace CustomRibbonWindow.Core
 {
+    using CustomRibbonWindow.Core.BaseClass;
+
     public class GeometryIcon : EnumerationBase
     {
         public static readonly GeometryIcon FolderAccount = new IconFolderAccount();

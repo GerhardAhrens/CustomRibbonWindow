@@ -13,7 +13,7 @@
 // </summary>
 //-----------------------------------------------------------------------
 
-namespace CustomRibbonWindow.GeneralBaseClass
+namespace CustomRibbonWindow.Core
 {
     using System.IO;
     using System.Windows.Media;

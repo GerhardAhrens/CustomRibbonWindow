@@ -4,8 +4,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:CustomRibbonWindow"
+    xmlns:localStaticCore="clr-namespace:CustomRibbonWindow.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
+    x:Name="_MainWindow"
+    Title="WPF Custom Window"
     Width="800"
     Height="450"
     AllowsTransparency="True"
@@ -20,80 +22,6 @@
     <Window.Icon>
         <DrawingImage Drawing="{StaticResource ResourceKey=IconAppSymbol2}" />
     </Window.Icon>
-
-    <Window.Resources>
-        <Style TargetType="RibbonTabHeader">
-            <Setter Property="Foreground" Value="Black" />
-            <Setter Property="FontWeight" Value="Normal" />
-            <Setter Property="Height" Value="30" />
-            <Setter Property="FontSize" Value="13" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="RibbonTabHeader">
-                        <Border
-                            x:Name="TabHeader"
-                            Margin="2,0"
-                            BorderBrush="Transparent"
-                            BorderThickness="0,3,0,0"
-                            CornerRadius="3">
-                            <ContentPresenter
-                                Margin="5,0"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center" />
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="TabHeader" Property="BorderThickness" Value="0,3,0,0" />
-                                <Setter TargetName="TabHeader" Property="Background" Value="LightGray" />
-                                <Setter TargetName="TabHeader" Property="BorderBrush" Value="Transparent" />
-                                <Setter TargetName="TabHeader" Property="CornerRadius" Value="3" />
-                            </Trigger>
-
-                            <Trigger Property="IsRibbonTabSelected" Value="True">
-                                <Setter TargetName="TabHeader" Property="BorderThickness" Value="0,3,0,0" />
-                                <Setter TargetName="TabHeader" Property="Background" Value="Transparent" />
-                                <Setter TargetName="TabHeader" Property="BorderBrush" Value="Red" />
-                                <Setter TargetName="TabHeader" Property="CornerRadius" Value="3" />
-                                <Setter Property="Foreground" Value="Black" />
-                                <Setter Property="FontWeight" Value="Bold" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="TitleBarButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border
-                            x:Name="bdr_main"
-                            Background="Transparent"
-                            BorderBrush="Transparent"
-                            BorderThickness="0">
-                            <ContentPresenter
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                ContentSource="Content" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="bdr_main" Property="Background" Value="LightGray" />
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="bdr_main" Property="Background" Value="Gray" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
-
-
 
     <WindowChrome.WindowChrome>
         <WindowChrome
@@ -114,7 +42,10 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="45" />
                 <RowDefinition Height="*" />
+                <RowDefinition Height="35" />
             </Grid.RowDefinitions>
+
+            <!--#region Windows Titel Zeile-->
             <Grid Grid.Row="0">
                 <WrapPanel
                     Height="40"
@@ -132,7 +63,7 @@
                         VerticalAlignment="Center"
                         FontSize="18"
                         Foreground="Blue"
-                        Text="WPF Custom Window" />
+                        Text="{Binding Path=Title, ElementName=_MainWindow}" />
                 </WrapPanel>
 
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
@@ -193,7 +124,9 @@
                     </Button>
                 </StackPanel>
             </Grid>
+            <!--#endregion Windows Titel Zeile-->
 
+            <!--#region Ribbon Menü-->
             <Ribbon
                 x:Name="mainRibbon"
                 Title=""
@@ -222,7 +155,20 @@
                 <RibbonTab
                     VerticalAlignment="Top"
                     Header="Menü Gruppe 1"
-                    IsEnabled="True" />
+                    IsEnabled="True">
+                    <RibbonGroup Header="Navigation">
+                        <RibbonButton
+                            x:Name="BtnExitApplication"
+                            Width="Auto"
+                            Height="Auto"
+                            Click="ChangeFontWeightOnClick"
+                            Command="{Binding Path=CloseControlCommand}"
+                            IsEnabled="True"
+                            Label="Beenden"
+                            LargeImageSource="{StaticResource ResourceKey=DrawApplicationClose}"
+                            ToolTip="Programm Beenden, Alt-X" />
+                    </RibbonGroup>
+                </RibbonTab>
 
                 <RibbonTab
                     VerticalAlignment="Top"
@@ -234,6 +180,38 @@
                     Header="Menü Gruppe 3"
                     IsEnabled="True" />
             </Ribbon>
+            <!--#endregion Ribbon Menü-->
+
+            <!--#region Statuszeile-->
+            <StatusBar
+                Grid.Row="2"
+                Height="Auto"
+                Background="Transparent"
+                FontSize="13">
+                <StatusBarItem x:Name="statusBarItemUserDomainName" DockPanel.Dock="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{StaticResource ResourceKey=IconStatusbarUser}" />
+                        <Label x:Name="StatusbarUser" Content="{x:Static localStaticCore:StatusbarContent.User}" />
+                    </StackPanel>
+                </StatusBarItem>
+
+                <StatusBarItem DockPanel.Dock="Right">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{x:Static localStaticCore:StatusbarContent.CurrentDate}" />
+                        <Label Content="{StaticResource ResourceKey=IconStatusbarCalendar}" />
+                    </StackPanel>
+                </StatusBarItem>
+
+                <Separator Background="Black" />
+
+                <StatusBarItem x:Name="sbiNotification" DockPanel.Dock="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{StaticResource ResourceKey=IconStatusbarNotification}" />
+                        <Label Content="{Binding Path=(localStaticCore:StatusbarContent.Notification)}" />
+                    </StackPanel>
+                </StatusBarItem>
+            </StatusBar>
+            <!--#endregion Statuszeile-->
         </Grid>
     </Border>
 </RibbonWindow>

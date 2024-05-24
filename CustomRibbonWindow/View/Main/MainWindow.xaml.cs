@@ -1,12 +1,15 @@
 ﻿namespace CustomRibbonWindow
 {
+    using System;
+    using System.ComponentModel;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Controls.Ribbon;
     using System.Windows.Input;
     using System.Windows.Media;
 
-    using CustomRibbonWindow.GeneralBaseClass;
+    using CustomRibbonWindow.Core;
+    using CustomRibbonWindow.Core.BaseClass;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -17,10 +20,32 @@
         {
             this.InitializeComponent();
             WeakEventManager<RibbonWindow, MouseButtonEventArgs>.AddHandler(this, "MouseLeftButtonDown", this.OnWindowMouseLeftButtonDown);
+            WeakEventManager<RibbonWindow, CancelEventArgs>.AddHandler(this, "Closing", this.OnMainWindowClosing);
+            WeakEventManager<RibbonWindow, RoutedEventArgs>.AddHandler(this, "Loaded", this.OnMainWindowLoaded);
             WeakEventManager<Ribbon, RoutedEventArgs>.AddHandler(this.mainRibbon, "Loaded", this.OnRibbonLoaded);
             WeakEventManager<Button, RoutedEventArgs>.AddHandler(this.buttonMinimize, "Click", this.OnButtonMinimizeClick);
             WeakEventManager<Button, RoutedEventArgs>.AddHandler(this.buttonMaximize, "Click", this.OnButtonMaximizeClick);
             WeakEventManager<Button, RoutedEventArgs>.AddHandler(this.buttonClose, "Click", this.OnButtonCloseClick);
+
+            /* Ribbon Menü Button */
+            WeakEventManager<RibbonButton, RoutedEventArgs>.AddHandler(this.BtnExitApplication, "Click", this.OnButtonCloseClick);
+        }
+
+        private void OnMainWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            StatusbarContent.Notification = "Bereit";
+        }
+
+        private void OnMainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBox.Show("Programm beenden?", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                e.Cancel = false;
+            }
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         private void OnRibbonLoaded(object sender, RoutedEventArgs e)
@@ -73,6 +98,11 @@
         private void OnWindowMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void ChangeFontWeightOnClick(object sender, RoutedEventArgs e)
+        {
+            sender.ChangeFontWeight(this);
         }
     }
 }

@@ -16,8 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Style\" />
-    <Folder Include="_WindowBase\" />
+    <Folder Include="DataRepository\" />
+    <Folder Include="Extension\System.Windows.Controls\" />
+    <Folder Include="ViewModel\" />
   </ItemGroup>
 
 </Project>

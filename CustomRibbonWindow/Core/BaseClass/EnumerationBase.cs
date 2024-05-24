@@ -22,7 +22,7 @@
  * If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace CustomRibbonWindow.GeneralBaseClass
+namespace CustomRibbonWindow.Core.BaseClass
 {
     using System;
     using System.Collections.Generic;
