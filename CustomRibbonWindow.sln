@@ -13,6 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{71
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{C8B96BC9-6666-4F7A-AFF9-78D1CD02A7E0}"
+	ProjectSection(SolutionItems) = preProject
+		_Template\CustomRibbonWindow.zip = _Template\CustomRibbonWindow.zip
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
