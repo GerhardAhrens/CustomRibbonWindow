@@ -20,11 +20,27 @@
         </GeometryDrawing.Geometry>
     </GeometryDrawing>
 
+    <!--#region Ribbon Menü - Group: Navigation-->
     <DrawingImage x:Key="DrawApplicationClose">
         <DrawingImage.Drawing>
             <GeometryDrawing Brush="Red" Geometry="M134.723,100.793L200.09,35.426C202.086,33.428,202.086,30.188,200.09,28.188L173.399,1.499C171.403,-0.5,168.161,-0.5,166.161,1.499L100.793,66.866 35.426,1.499C33.428,-0.5,30.188,-0.5,28.188,1.499L1.499,28.188C-0.5,30.188,-0.5,33.428,1.499,35.426L66.866,100.793 1.499,166.161C-0.5,168.161,-0.5,171.403,1.499,173.399L28.188,200.09C30.188,202.086,33.428,202.086,35.426,200.09L100.793,134.723 166.161,200.09C168.161,202.086,171.403,202.086,173.399,200.09L200.09,173.399C202.086,171.403,202.086,168.161,200.09,166.161L134.723,100.793z" />
         </DrawingImage.Drawing>
     </DrawingImage>
+    <!--#endregion Ribbon Menü - Group: Navigation-->
+
+    <!--#region Ribbon Menü - Group: Bearbeiten-->
+    <DrawingImage x:Key="DrawAccount">
+        <DrawingImage.Drawing>
+            <GeometryDrawing Brush="Black" Geometry="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,6A2,2 0 0,0 10,8A2,2 0 0,0 12,10A2,2 0 0,0 14,8A2,2 0 0,0 12,6M12,13C14.67,13 20,14.33 20,17V20H4V17C4,14.33 9.33,13 12,13M12,14.9C9.03,14.9 5.9,16.36 5.9,17V18.1H18.1V17C18.1,16.36 14.97,14.9 12,14.9Z" />
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <DrawingImage x:Key="DrawAccountGroup">
+        <DrawingImage.Drawing>
+            <GeometryDrawing Brush="Black" Geometry="M13.07 10.41A5 5 0 0 0 13.07 4.59A3.39 3.39 0 0 1 15 4A3.5 3.5 0 0 1 15 11A3.39 3.39 0 0 1 13.07 10.41M5.5 7.5A3.5 3.5 0 1 1 9 11A3.5 3.5 0 0 1 5.5 7.5M7.5 7.5A1.5 1.5 0 1 0 9 6A1.5 1.5 0 0 0 7.5 7.5M16 17V19H2V17S2 13 9 13 16 17 16 17M14 17C13.86 16.22 12.67 15 9 15S4.07 16.31 4 17M15.95 13A5.32 5.32 0 0 1 18 17V19H22V17S22 13.37 15.94 13Z" />
+        </DrawingImage.Drawing>
+    </DrawingImage>
+    <!--#endregion Ribbon Menü - Group: Bearbeiten-->
 
     <!--#region Statuszeile-->
     <Viewbox

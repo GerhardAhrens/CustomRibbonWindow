@@ -13,6 +13,8 @@
 // </summary>
 //-----------------------------------------------------------------------
 
+
+
 namespace CustomizedTitle
 {
     #region using's 😊 
@@ -63,6 +65,7 @@ namespace CustomizedTitle
                 ApplicationExit();
             }
         }
+
 
         protected override void OnStartup(StartupEventArgs e)
         {

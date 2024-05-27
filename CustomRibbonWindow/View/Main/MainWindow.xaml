@@ -161,12 +161,31 @@
                             x:Name="BtnExitApplication"
                             Width="Auto"
                             Height="Auto"
-                            Click="ChangeFontWeightOnClick"
-                            Command="{Binding Path=CloseControlCommand}"
                             IsEnabled="True"
                             Label="Beenden"
                             LargeImageSource="{StaticResource ResourceKey=DrawApplicationClose}"
                             ToolTip="Programm Beenden, Alt-X" />
+                    </RibbonGroup>
+
+                    <RibbonGroup Header="Bearbeiten">
+                        <RibbonButton
+                            x:Name="BtnMP1"
+                            Width="Auto"
+                            Height="Auto"
+                            IsEnabled="True"
+                            Label="Benutzer"
+                            LargeImageSource="{StaticResource ResourceKey=DrawAccount}"
+                            ToolTip="Benutzer bearbeiten" />
+
+                        <RibbonButton
+                            x:Name="BtnMP2"
+                            Width="Auto"
+                            Height="Auto"
+                            IsEnabled="True"
+                            Label="Benutzer- gruppe"
+                            LargeImageSource="{StaticResource ResourceKey=DrawAccountGroup}"
+                            RibbonTwoLineText.HasTwoLines="True"
+                            ToolTip="Benutzer bearbeiten" />
                     </RibbonGroup>
                 </RibbonTab>
 

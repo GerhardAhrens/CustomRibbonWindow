@@ -8,6 +8,8 @@
     using System.Windows.Input;
     using System.Windows.Media;
 
+    using CustomizedTitle;
+
     using CustomRibbonWindow.Core;
 
     /// <summary>
@@ -32,6 +34,26 @@
             /* Ribbon Menü und Ribbon Button */
             WeakEventManager<Ribbon, RoutedEventArgs>.AddHandler(this.mainRibbon, "Loaded", this.OnRibbonLoaded);
             WeakEventManager<RibbonButton, RoutedEventArgs>.AddHandler(this.BtnExitApplication, "Click", this.OnButtonCloseClick);
+            WeakEventManager<RibbonButton, RoutedEventArgs>.AddHandler(this.BtnMP1, "Click", this.OnRibbonButtonAction);
+            WeakEventManager<RibbonButton, RoutedEventArgs>.AddHandler(this.BtnMP2, "Click", this.OnRibbonButtonAction);
+        }
+
+        private void OnRibbonButtonAction(object sender, RoutedEventArgs e)
+        {
+            string buttonName = (sender as RibbonButton).Name;
+            if (buttonName != null)
+            {
+                if (buttonName == nameof(this.BtnMP1))
+                {
+                }
+                else if (buttonName == nameof(this.BtnMP2))
+                {
+                }
+                else
+                {
+                    App.InfoMessage($"Für den Menüpunkt '{buttonName}' gibt es aktuell keine Funktion.");
+                }
+            }
         }
 
         private void OnMainWindowLoaded(object sender, RoutedEventArgs e)
