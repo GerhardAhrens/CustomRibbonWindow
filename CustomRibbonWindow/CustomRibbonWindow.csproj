@@ -9,6 +9,11 @@
 
   <ItemGroup>
     <None Remove="Resources\Images\app.ico" />
+    <None Remove="Resources\Images\AppTemplate.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Images\AppTemplate.ico" />
   </ItemGroup>
 
   <ItemGroup>
