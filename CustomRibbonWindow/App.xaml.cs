@@ -1,4 +1,19 @@
-﻿namespace CustomizedTitle
+﻿//-----------------------------------------------------------------------
+// <copyright file="App.xaml.cs" company="PTA GmbH">
+//     Class: App
+//     Copyright © PTA GmbH 2024
+// </copyright>
+//
+// <author>Gerhard Ahrens - PTA GmbH</author>
+// <email>gerhard.ahrens@pta.de</email>
+// <date>27.05.2024</date>
+//
+// <summary>
+// Klasse für Start der Applikation, festlegung Grundsätzlicher Rahmenbedingungen.
+// </summary>
+//-----------------------------------------------------------------------
+
+namespace CustomizedTitle
 {
     #region using's 😊 
     using System;

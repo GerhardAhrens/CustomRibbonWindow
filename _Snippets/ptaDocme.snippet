@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>Class Header</Title>
+			<Shortcut>ptadocme</Shortcut>
+			<Description>Codeausschnitt für Klasse Dokumentationskopf</Description>
+			<Author>Gerhard Ahrens</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>Dokumentation Klasse</ToolTip>
+					<Default>MyClass</Default>
+				</Literal>
+				<Literal>
+					<ID>year</ID>
+					<ToolTip>Erstellungsjahr</ToolTip>
+					<Default>yyyy</Default>
+				</Literal>
+				<Literal>
+					<ID>date</ID>
+					<ToolTip>Erstellungsdatum</ToolTip>
+					<Default>dd.MM.yyyy</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[
+//-----------------------------------------------------------------------
+// <copyright file="$name$.cs" company="PTA GmbH">
+//     Class: $name$
+//     Copyright © PTA GmbH $year$
+// </copyright>
+//
+// <author>Gerhard Ahrens - PTA GmbH</author>
+// <email>gerhard.ahrens@pta.de</email>
+// <date>$date$</date>
+//
+// <summary>
+// Klasse für 
+// </summary>
+//-----------------------------------------------------------------------
+]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

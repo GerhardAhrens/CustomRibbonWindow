@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>WeakEventManager mit Methodenhandler</Title>
+			<Shortcut>ptaweakevent</Shortcut>
+			<Description>WeakEventManager Definition mit einem Methodenhandler</Description>
+			<Author>Gerhard Ahrens</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>ControlTyp</ID>
+					<ToolTip>Controlname</ToolTip>
+					<Default>Button</Default>
+				</Literal>
+				<Literal>
+					<ID>EventArgs</ID>
+					<ToolTip>Name des Eventargument</ToolTip>
+					<Default>RoutedEventArgs</Default>
+				</Literal>
+				<Literal>
+					<ID>this</ID>
+					<ToolTip>Name des Control/Klasse dass das Event beinhaltet</ToolTip>
+					<Default>this.ControlName</Default>
+				</Literal>
+				<Literal>
+					<ID>Eventname</ID>
+					<ToolTip>Name des Event im Control/Klasse</ToolTip>
+					<Default>Click</Default>
+				</Literal>
+				<Literal>
+					<ID>Handlername</ID>
+					<ToolTip>Name des private Eventhandler</ToolTip>
+					<Default>OnControlNameClick</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp"><![CDATA[WeakEventManager<$ControlTyp$, $EventArgs$>.AddHandler($this$, "$Eventname$", this.$Handlername$);]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

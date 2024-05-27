@@ -9,7 +9,6 @@
     using System.Windows.Media;
 
     using CustomRibbonWindow.Core;
-    using CustomRibbonWindow.Core.BaseClass;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -19,15 +18,19 @@
         public MainWindow()
         {
             this.InitializeComponent();
-            WeakEventManager<RibbonWindow, MouseButtonEventArgs>.AddHandler(this, "MouseLeftButtonDown", this.OnWindowMouseLeftButtonDown);
+
+            /* Window Events */
             WeakEventManager<RibbonWindow, CancelEventArgs>.AddHandler(this, "Closing", this.OnMainWindowClosing);
             WeakEventManager<RibbonWindow, RoutedEventArgs>.AddHandler(this, "Loaded", this.OnMainWindowLoaded);
-            WeakEventManager<Ribbon, RoutedEventArgs>.AddHandler(this.mainRibbon, "Loaded", this.OnRibbonLoaded);
+            WeakEventManager<RibbonWindow, MouseButtonEventArgs>.AddHandler(this, "MouseLeftButtonDown", this.OnWindowMouseLeftButtonDown);
+
+            /* Window Titel Button */
             WeakEventManager<Button, RoutedEventArgs>.AddHandler(this.buttonMinimize, "Click", this.OnButtonMinimizeClick);
             WeakEventManager<Button, RoutedEventArgs>.AddHandler(this.buttonMaximize, "Click", this.OnButtonMaximizeClick);
             WeakEventManager<Button, RoutedEventArgs>.AddHandler(this.buttonClose, "Click", this.OnButtonCloseClick);
 
-            /* Ribbon Menü Button */
+            /* Ribbon Menü und Ribbon Button */
+            WeakEventManager<Ribbon, RoutedEventArgs>.AddHandler(this.mainRibbon, "Loaded", this.OnRibbonLoaded);
             WeakEventManager<RibbonButton, RoutedEventArgs>.AddHandler(this.BtnExitApplication, "Click", this.OnButtonCloseClick);
         }
 
@@ -36,7 +39,7 @@
             StatusbarContent.Notification = "Bereit";
         }
 
-        private void OnMainWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void OnMainWindowClosing(object sender, CancelEventArgs e)
         {
             if (MessageBox.Show("Programm beenden?", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {

@@ -6,6 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomRibbonWindow", "CustomRibbonWindow\CustomRibbonWindow.csproj", "{A0F566D5-DFE1-4EF0-8A1D-0761F980A190}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snippets", "Snippets", "{71498373-9ED7-4B29-BE38-02773B917F5B}"
+	ProjectSection(SolutionItems) = preProject
+		_Snippets\ptaDocme.snippet = _Snippets\ptaDocme.snippet
+		_Snippets\ptaPrivateClass.snippet = _Snippets\ptaPrivateClass.snippet
+		_Snippets\ptaWeakevent.snippet = _Snippets\ptaWeakevent.snippet
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{C8B96BC9-6666-4F7A-AFF9-78D1CD02A7E0}"
 EndProject
