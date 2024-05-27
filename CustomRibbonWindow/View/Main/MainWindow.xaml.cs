@@ -11,6 +11,7 @@
     using CustomizedTitle;
 
     using CustomRibbonWindow.Core;
+    using CustomRibbonWindow.View.Dialog;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -45,6 +46,9 @@
             {
                 if (buttonName == nameof(this.BtnMP1))
                 {
+                    DialogEins dlg = new DialogEins();
+                    dlg.Owner = this;
+                    dlg.ShowDialog();
                 }
                 else if (buttonName == nameof(this.BtnMP2))
                 {

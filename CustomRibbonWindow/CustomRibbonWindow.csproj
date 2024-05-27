@@ -23,7 +23,6 @@
   <ItemGroup>
     <Folder Include="DataRepository\" />
     <Folder Include="Extension\System.Windows.Controls\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
 
 </Project>
