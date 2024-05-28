@@ -61,7 +61,7 @@ namespace CustomRibbonWindow.Core.BaseClass
 
             this._IsModified = true;
             field = value;
-            OnPropertyChanged(propertyName);
+            this.OnPropertyChanged(propertyName);
             return true;
         }
         #endregion PropertyChanged Implementierung

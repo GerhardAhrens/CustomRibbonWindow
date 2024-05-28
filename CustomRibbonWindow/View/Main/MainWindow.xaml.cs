@@ -1,6 +1,5 @@
 ﻿namespace CustomRibbonWindow
 {
-    using System;
     using System.ComponentModel;
     using System.Windows;
     using System.Windows.Controls;
@@ -13,6 +12,7 @@
     using CustomRibbonWindow.Core;
     using CustomRibbonWindow.View;
     using CustomRibbonWindow.View.Dialog;
+    using CustomRibbonWindow.ViewModel;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -26,7 +26,6 @@
             /* Window Events */
             WeakEventManager<RibbonWindow, CancelEventArgs>.AddHandler(this, "Closing", this.OnMainWindowClosing);
             WeakEventManager<RibbonWindow, RoutedEventArgs>.AddHandler(this, "Loaded", this.OnMainWindowLoaded);
-            WeakEventManager<RibbonWindow, MouseButtonEventArgs>.AddHandler(this, "MouseLeftButtonDown", this.OnWindowMouseLeftButtonDown);
 
             /* Window Titel Button */
             WeakEventManager<Button, RoutedEventArgs>.AddHandler(this.buttonMinimize, "Click", this.OnButtonMinimizeClick);
@@ -54,9 +53,12 @@
                 }
                 else if (buttonName == nameof(this.BtnMP1))
                 {
-                    DialogEins dlg = new DialogEins();
-                    dlg.Owner = this;
-                    dlg.ShowDialog();
+                    /*
+                    using (DialogManager dm = new DialogManager())
+                    {
+                        dm.ShowDialog<DialogEins>(new DialogEinsVM(), Application.Current.MainWindow);
+                    }
+                    */
                 }
                 else if (buttonName == nameof(this.BtnMP2))
                 {
@@ -76,6 +78,11 @@
             {
                 userPrefs.Load();
             }
+        }
+
+        private void OnButtonCloseClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void OnMainWindowClosing(object sender, CancelEventArgs e)
@@ -135,16 +142,6 @@
                 this.buttonMaximize.Content = GeometryTools.GetPathGeometry(GeometryIcon.WindowButtonRestore.Value, Colors.Black);
                 this.buttonMaximize.ToolTip = "Window wiederherstellen";
             }
-        }
-
-        private void OnButtonCloseClick(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void OnWindowMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
         }
 
         private void ChangeFontWeightOnClick(object sender, RoutedEventArgs e)

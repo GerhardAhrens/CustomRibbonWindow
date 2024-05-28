@@ -10,7 +10,7 @@
     Title="WPF Custom Window"
     Width="800"
     Height="450"
-    AllowsTransparency="True"
+    AllowsTransparency="False"
     Background="Snow"
     BorderBrush="Transparent"
     BorderThickness="0"
@@ -33,202 +33,196 @@
             UseAeroCaptionButtons="False" />
     </WindowChrome.WindowChrome>
 
-    <Border
-        Background="Transparent"
-        BorderBrush="Black"
-        BorderThickness="1"
-        CornerRadius="2">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="35" />
-            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
 
-            <!--#region Windows Titel Zeile-->
-            <Grid Grid.Row="0">
-                <WrapPanel
-                    Height="40"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Background="AliceBlue">
-                    <Image
-                        x:Name="WindowIcon"
-                        Height="35"
-                        VerticalAlignment="Center"
-                        Source="{StaticResource ResourceKey=IconAppSymbol}" />
+        <!--#region Windows Titel Zeile-->
+        <Grid Grid.Row="0">
+            <WrapPanel
+                Height="40"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="AliceBlue">
+                <Image
+                    x:Name="WindowIcon"
+                    Height="35"
+                    VerticalAlignment="Center"
+                    Source="{StaticResource ResourceKey=IconAppSymbol}" />
 
-                    <TextBlock
-                        Margin="10,0,0,0"
-                        VerticalAlignment="Center"
-                        FontSize="18"
-                        Foreground="Blue"
-                        Text="{Binding Path=Title, ElementName=_MainWindow}" />
-                </WrapPanel>
+                <TextBlock
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    FontSize="18"
+                    Foreground="Blue"
+                    Text="{Binding Path=Title, ElementName=_MainWindow}" />
+            </WrapPanel>
 
-                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button
-                        x:Name="buttonMinimize"
-                        Width="30"
-                        Height="30"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        Style="{StaticResource ResourceKey=ButtonFlatStyle}"
-                        ToolTip="Window minimieren"
-                        WindowChrome.IsHitTestVisibleInChrome="True">
-                        <Button.Content>
-                            <Path
-                                Width="22"
-                                Height="22"
-                                Data="{StaticResource ResourceKey=IconWindowButtonMin}"
-                                Fill="Black"
-                                Stretch="Uniform" />
-                        </Button.Content>
-                    </Button>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button
+                    x:Name="buttonMinimize"
+                    Width="30"
+                    Height="30"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Style="{StaticResource ResourceKey=ButtonFlatStyle}"
+                    ToolTip="Window minimieren"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Button.Content>
+                        <Path
+                            Width="22"
+                            Height="22"
+                            Data="{StaticResource ResourceKey=IconWindowButtonMin}"
+                            Fill="Black"
+                            Stretch="Uniform" />
+                    </Button.Content>
+                </Button>
 
-                    <Button
-                        x:Name="buttonMaximize"
-                        Width="30"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        Style="{StaticResource ResourceKey=ButtonFlatStyle}"
-                        ToolTip="Window maximieren"
-                        WindowChrome.IsHitTestVisibleInChrome="True">
-                        <Button.Content>
-                            <Path
-                                Width="22"
-                                Height="22"
-                                Data="{StaticResource ResourceKey=IconWindowButtonMax}"
-                                Fill="Black"
-                                Stretch="Fill" />
-                        </Button.Content>
-                    </Button>
+                <Button
+                    x:Name="buttonMaximize"
+                    Width="30"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Style="{StaticResource ResourceKey=ButtonFlatStyle}"
+                    ToolTip="Window maximieren"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Button.Content>
+                        <Path
+                            Width="22"
+                            Height="22"
+                            Data="{StaticResource ResourceKey=IconWindowButtonMax}"
+                            Fill="Black"
+                            Stretch="Fill" />
+                    </Button.Content>
+                </Button>
 
-                    <Button
-                        x:Name="buttonClose"
-                        Width="30"
-                        Margin="0,0,5,0"
-                        Background="Transparent"
-                        BorderBrush="Transparent"
-                        Style="{StaticResource ResourceKey=ButtonFlatStyle}"
-                        ToolTip="Window schließen"
-                        WindowChrome.IsHitTestVisibleInChrome="True">
-                        <Button.Content>
-                            <Path
-                                Width="22"
-                                Height="22"
-                                Data="{StaticResource ResourceKey=IconWindowButtonClose}"
-                                Fill="Red"
-                                Stretch="Fill" />
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
-            </Grid>
-            <!--#endregion Windows Titel Zeile-->
-
-            <!--#region Ribbon Menü-->
-            <Ribbon
-                x:Name="mainRibbon"
-                Grid.Row="1"
-                SelectedIndex="0">
-
-                <Ribbon.ApplicationMenu>
-                    <RibbonApplicationMenu Label="Home" Visibility="Collapsed">
-                        <RibbonApplicationMenuItem />
-                    </RibbonApplicationMenu>
-                </Ribbon.ApplicationMenu>
-
-                <RibbonTab
-                    VerticalAlignment="Top"
-                    Header="Menü Gruppe 1"
-                    IsEnabled="True">
-                    <RibbonGroup Header="Navigation">
-                        <RibbonButton
-                            x:Name="BtnExitApplication"
-                            Label="Beenden"
-                            LargeImageSource="{StaticResource ResourceKey=DrawApplicationClose}"
-                            ToolTip="Programm Beenden, Alt-X" />
-
-                        <RibbonButton
-                            x:Name="BtnHome"
-                            Label="Home"
-                            LargeImageSource="{StaticResource ResourceKey=DrawHome}" />
-                    </RibbonGroup>
-
-                    <RibbonGroup Header="Bearbeiten">
-                        <RibbonButton
-                            x:Name="BtnMP1"
-                            Label="Benutzer"
-                            LargeImageSource="{StaticResource ResourceKey=DrawAccount}"
-                            ToolTip="Benutzer bearbeiten" />
-
-                        <RibbonButton
-                            x:Name="BtnMP2"
-                            Label="Benutzer- gruppe"
-                            LargeImageSource="{StaticResource ResourceKey=DrawAccountGroup}"
-                            RibbonTwoLineText.HasTwoLines="True"
-                            ToolTip="Benutzer bearbeiten" />
-                    </RibbonGroup>
-                </RibbonTab>
-
-                <RibbonTab
-                    VerticalAlignment="Top"
-                    Header="Menü Gruppe 2"
-                    IsEnabled="True" />
-
-                <RibbonTab
-                    VerticalAlignment="Top"
-                    Header="Menü Gruppe 3"
-                    IsEnabled="True" />
-            </Ribbon>
-            <!--#endregion Ribbon Menü-->
-
-            <!--#region Contentbereich-->
-            <Border
-                Grid.Row="2"
-                Grid.Column="0"
-                BorderBrush="Black"
-                BorderThickness="0,1,0,1">
-                <ContentControl
-                    x:Name="mainContent"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Background="Silver"
-                    KeyboardNavigation.IsTabStop="False"
-                    KeyboardNavigation.TabNavigation="None"
-                    ScrollViewer.CanContentScroll="True"
-                    VirtualizingPanel.IsVirtualizing="True"
-                    Visibility="Visible" />
-            </Border>
-            <!--#endregion Contentbereich-->
-
-            <!--#region Statuszeile-->
-            <StatusBar Grid.Row="3">
-                <StatusBarItem x:Name="statusBarItemUserDomainName" DockPanel.Dock="Left">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{StaticResource ResourceKey=IconStatusbarUser}" />
-                        <Label x:Name="StatusbarUser" Content="{x:Static localStaticCore:StatusbarMainWindow.User}" />
-                    </StackPanel>
-                </StatusBarItem>
-
-                <StatusBarItem DockPanel.Dock="Right">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{x:Static localStaticCore:StatusbarMainWindow.CurrentDate}" />
-                        <Label Content="{StaticResource ResourceKey=IconStatusbarCalendar}" />
-                    </StackPanel>
-                </StatusBarItem>
-
-                <Separator Background="Black" />
-
-                <StatusBarItem x:Name="sbiNotification" DockPanel.Dock="Left">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="{StaticResource ResourceKey=IconStatusbarNotification}" />
-                        <Label Content="{Binding Path=(localStaticCore:StatusbarMainWindow.Notification)}" />
-                    </StackPanel>
-                </StatusBarItem>
-            </StatusBar>
-            <!--#endregion Statuszeile-->
+                <Button
+                    x:Name="buttonClose"
+                    Width="30"
+                    Margin="0,0,5,0"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Style="{StaticResource ResourceKey=ButtonFlatStyle}"
+                    ToolTip="Window schließen"
+                    WindowChrome.IsHitTestVisibleInChrome="True">
+                    <Button.Content>
+                        <Path
+                            Width="22"
+                            Height="22"
+                            Data="{StaticResource ResourceKey=IconWindowButtonClose}"
+                            Fill="Red"
+                            Stretch="Fill" />
+                    </Button.Content>
+                </Button>
+            </StackPanel>
         </Grid>
-    </Border>
+        <!--#endregion Windows Titel Zeile-->
+
+        <!--#region Ribbon Menü-->
+        <Ribbon
+            x:Name="mainRibbon"
+            Grid.Row="1"
+            SelectedIndex="0">
+
+            <Ribbon.ApplicationMenu>
+                <RibbonApplicationMenu Label="Home" Visibility="Collapsed">
+                    <RibbonApplicationMenuItem />
+                </RibbonApplicationMenu>
+            </Ribbon.ApplicationMenu>
+
+            <RibbonTab
+                VerticalAlignment="Top"
+                Header="Menü Gruppe 1"
+                IsEnabled="True">
+                <RibbonGroup Header="Navigation">
+                    <RibbonButton
+                        x:Name="BtnExitApplication"
+                        Label="Beenden"
+                        LargeImageSource="{StaticResource ResourceKey=DrawApplicationClose}"
+                        ToolTip="Programm Beenden, Alt-X" />
+
+                    <RibbonButton
+                        x:Name="BtnHome"
+                        Label="Home"
+                        LargeImageSource="{StaticResource ResourceKey=DrawHome}" />
+                </RibbonGroup>
+
+                <RibbonGroup Header="Bearbeiten">
+                    <RibbonButton
+                        x:Name="BtnMP1"
+                        Label="Benutzer"
+                        LargeImageSource="{StaticResource ResourceKey=DrawAccount}"
+                        ToolTip="Benutzer bearbeiten" />
+
+                    <RibbonButton
+                        x:Name="BtnMP2"
+                        Label="Benutzer- gruppe"
+                        LargeImageSource="{StaticResource ResourceKey=DrawAccountGroup}"
+                        RibbonTwoLineText.HasTwoLines="True"
+                        ToolTip="Benutzer bearbeiten" />
+                </RibbonGroup>
+            </RibbonTab>
+
+            <RibbonTab
+                VerticalAlignment="Top"
+                Header="Menü Gruppe 2"
+                IsEnabled="True" />
+
+            <RibbonTab
+                VerticalAlignment="Top"
+                Header="Menü Gruppe 3"
+                IsEnabled="True" />
+        </Ribbon>
+        <!--#endregion Ribbon Menü-->
+
+        <!--#region Contentbereich-->
+        <Border
+            Grid.Row="2"
+            Grid.Column="0"
+            BorderBrush="Black"
+            BorderThickness="0,1,0,1">
+            <ContentControl
+                x:Name="mainContent"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="Silver"
+                KeyboardNavigation.IsTabStop="False"
+                KeyboardNavigation.TabNavigation="None"
+                ScrollViewer.CanContentScroll="True"
+                VirtualizingPanel.IsVirtualizing="True"
+                Visibility="Visible" />
+        </Border>
+        <!--#endregion Contentbereich-->
+
+        <!--#region Statuszeile-->
+        <StatusBar Grid.Row="3">
+            <StatusBarItem x:Name="statusBarItemUserDomainName" DockPanel.Dock="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource ResourceKey=IconStatusbarUser}" />
+                    <Label x:Name="StatusbarUser" Content="{x:Static localStaticCore:StatusbarMainWindow.User}" />
+                </StackPanel>
+            </StatusBarItem>
+
+            <StatusBarItem DockPanel.Dock="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{x:Static localStaticCore:StatusbarMainWindow.CurrentDate}" />
+                    <Label Content="{StaticResource ResourceKey=IconStatusbarCalendar}" />
+                </StackPanel>
+            </StatusBarItem>
+
+            <Separator Background="Black" />
+
+            <StatusBarItem x:Name="sbiNotification" DockPanel.Dock="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{StaticResource ResourceKey=IconStatusbarNotification}" />
+                    <Label Content="{Binding Path=(localStaticCore:StatusbarMainWindow.Notification)}" />
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+        <!--#endregion Statuszeile-->
+    </Grid>
 </RibbonWindow>

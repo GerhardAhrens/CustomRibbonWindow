@@ -22,17 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\BaseFunction\" />
     <Folder Include="Core\ClassInterface\" />
     <Folder Include="DataRepository\" />
     <Folder Include="Extension\System.Windows.Controls\" />
+    <Folder Include="ViewModel\" />
     <Folder Include="View\Converter\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="View\Dialog\ItemTemplateDialogWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Folder Include="View\Dialog\" />
   </ItemGroup>
 
 </Project>
