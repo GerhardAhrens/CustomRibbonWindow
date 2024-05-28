@@ -20,10 +20,12 @@ namespace CustomRibbonWindow.ViewModel
 
     using CustomRibbonWindow.Core;
     using CustomRibbonWindow.Core.BaseClass;
+    using System;
 
     public class DialogEinsVM : ViewModelBase
     {
-        public DelegateCommand DialogCloseCommand => new DelegateCommand(this.CloseDialog, this.CanCloseDialog);
+        public DelegateCommand DialogCloseCommand => new DelegateCommand(this.CloseDialogHandler, this.CanCloseDialogHandler);
+        public DelegateCommand SaveCommand => new DelegateCommand(this.SaveHandler, this.CanSaveHandler);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DialogEinsVM"/> class.
@@ -36,6 +38,20 @@ namespace CustomRibbonWindow.ViewModel
 
         public BindableObjectProperty<string> DialogTitle { get; set; } = new BindableObjectProperty<string>();
 
+        private string _Name;
+
+        public string Name
+        {
+            get { return this._Name; }
+            set
+            {
+                if (this.SetField(ref this._Name, value) == true)
+                {
+                    StatusbarDialog.Notification = this.IsModified == false ? "Bereit" : "Geändert";
+                }
+            }
+        }
+
 
         private void LoadData()
         {
@@ -43,7 +59,7 @@ namespace CustomRibbonWindow.ViewModel
             base.IsModified = false;
         }
 
-        private void CloseDialog(object parameter)
+        private void CloseDialogHandler(object parameter)
         {
             Window currentWindow = Application.Current.Windows.Cast<Window>().Single(s => s.IsActive == true);
             if (currentWindow != null)
@@ -52,9 +68,20 @@ namespace CustomRibbonWindow.ViewModel
             }
         }
 
-        private bool CanCloseDialog()
+        private bool CanCloseDialogHandler()
         {
             return true;
+        }
+
+        private bool CanSaveHandler()
+        {
+            return true;
+        }
+
+        private void SaveHandler(object obj)
+        {
+            this.IsModified = false;
+            StatusbarDialog.Notification = this.IsModified == false ? "Bereit" : "Geändert";
         }
     }
 }

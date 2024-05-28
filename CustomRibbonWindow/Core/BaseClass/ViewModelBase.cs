@@ -15,15 +15,14 @@
 
 namespace CustomRibbonWindow.Core.BaseClass
 {
-    using System;
-    using System.Collections;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
 
-    public abstract class ViewModelBase
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
+        private bool _IsModified;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ViewModelBase"/> class.
         /// </summary>
@@ -31,6 +30,40 @@ namespace CustomRibbonWindow.Core.BaseClass
         {
         }
 
-        public bool IsModified { get; set; }
+        public bool IsModified
+        {
+            get { return _IsModified; }
+            set
+            {
+                this.SetField(ref _IsModified, value);
+            }
+        }
+
+
+        #region PropertyChanged Implementierung
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+        protected bool SetField<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
+        {
+            if (EqualityComparer<T>.Default.Equals(field, value))
+            {
+                this._IsModified = false;
+                return false;
+            }
+
+            this._IsModified = true;
+            field = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+        #endregion PropertyChanged Implementierung
     }
 }
