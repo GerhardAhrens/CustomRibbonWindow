@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:CustomRibbonWindow.View.Dialog"
+    xmlns:localStaticCore="clr-namespace:CustomRibbonWindow.Core"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="DialogEins"
     Width="500"
@@ -67,10 +68,39 @@
                 </WrapPanel>
             </Grid>
 
-            <ToolBar>
-                
+            <!--#region Toolbar-->
+            <ToolBar Grid.Row="1" Grid.Column="0">
+                <Button
+                    x:Name="buttonMinimize"
+                    Width="30"
+                    Height="30"
+                    Background="Transparent"
+                    BorderBrush="Transparent"
+                    Command="{Binding Path=DialogCloseCommand}"
+                    Style="{StaticResource ResourceKey=ButtonFlatStyle}"
+                    ToolTip="Dialog schließen">
+                    <Button.Content>
+                        <Path
+                            Width="22"
+                            Height="22"
+                            Data="{StaticResource ResourceKey=ButtonIconClose}"
+                            Fill="Red"
+                            Stretch="Uniform" />
+                    </Button.Content>
+                </Button>
             </ToolBar>
-            
+            <!--#endregion Toolbar-->
+
+            <!--#region Statuszeile-->
+            <StatusBar Grid.Row="3">
+                <StatusBarItem x:Name="sbiNotification" DockPanel.Dock="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{StaticResource ResourceKey=IconStatusbarNotification}" />
+                        <Label Content="{Binding Path=(localStaticCore:StatusbarDialog.Notification)}" />
+                    </StackPanel>
+                </StatusBarItem>
+            </StatusBar>
+            <!--#endregion Statuszeile-->
         </Grid>
     </Border>
 </Window>

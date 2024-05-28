@@ -15,6 +15,10 @@
 
 namespace CustomRibbonWindow.ViewModel
 {
+    using System.Windows;
+    using System.Linq;
+
+    using CustomRibbonWindow.Core;
     using CustomRibbonWindow.Core.BaseClass;
 
     public class DialogEinsVM
@@ -35,10 +39,16 @@ namespace CustomRibbonWindow.ViewModel
 
         private void LoadData()
         {
+            StatusbarDialog.Notification = "Bereit";
         }
 
         private void CloseDialog(object parameter)
         {
+            Window currentWindow = Application.Current.Windows.Cast<Window>().Single(s => s.IsActive == true);
+            if (currentWindow != null)
+            {
+                currentWindow.Close();
+            }
         }
 
         private bool CanCloseDialog()

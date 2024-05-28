@@ -5,6 +5,7 @@
     <TargetFramework>net8.0-windows7.0</TargetFramework>
     <Nullable>disable</Nullable>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Core\BaseFunction\" />
     <Folder Include="DataRepository\" />
     <Folder Include="Extension\System.Windows.Controls\" />
   </ItemGroup>

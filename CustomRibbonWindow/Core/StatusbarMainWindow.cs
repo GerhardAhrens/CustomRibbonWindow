@@ -1,15 +1,15 @@
 //-----------------------------------------------------------------------
-// <copyright file="StatusbarContent.cs" company="NRM Netzdienste Rhein-Main GmbH">
-//     Class: StatusbarContent
-//     Copyright © NRM Netzdienste Rhein-Main GmbH 2023
+// <copyright file="StatusbarMainWindow.cs" company="PTA GmbH">
+//     Class: StatusbarMainWindow
+//     Copyright © PTA GmbH 2024
 // </copyright>
 //
-// <author>DeveloperName - NRM Netzdienste Rhein-Main GmbH</author>
-// <email>DeveloperName@nrm-netzdienste.de</email>
-// <date>18.08.2023 07:03:18</date>
+// <author>Gerhard Ahrens - PTA GmbH</author>
+// <email>gerhard.ahrens@pta.de</email>
+// <date>27.05.2024</date>
 //
 // <summary>
-// Klasse für 
+// Statische Klasse zur Darstellung von Information in der Statuszeile des MainWindow
 // </summary>
 //-----------------------------------------------------------------------
 
@@ -17,16 +17,16 @@ namespace CustomRibbonWindow.Core
 {
     using System;
 
-    public class StatusbarContent
+    public class StatusbarMainWindow
     {
         private static string notification = string.Empty;
         private static string databaseInfo = string.Empty;
         private static string databaseInfoTooltip = string.Empty;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StatusbarContent"/> class.
+        /// Initializes a new instance of the <see cref="StatusbarMainWindow"/> class.
         /// </summary>
-        static StatusbarContent()
+        static StatusbarMainWindow()
         {
             CurrentUser = $"{Environment.UserDomainName}/{Environment.UserName}";
             User = CurrentUser;

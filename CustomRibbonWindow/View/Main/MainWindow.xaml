@@ -73,7 +73,7 @@
                         Height="30"
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        Style="{StaticResource ResourceKey=TitleBarButtonStyle}"
+                        Style="{StaticResource ResourceKey=ButtonFlatStyle}"
                         ToolTip="Window minimieren"
                         WindowChrome.IsHitTestVisibleInChrome="True">
                         <Button.Content>
@@ -91,7 +91,7 @@
                         Width="30"
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        Style="{StaticResource TitleBarButtonStyle}"
+                        Style="{StaticResource ResourceKey=ButtonFlatStyle}"
                         ToolTip="Window maximieren"
                         WindowChrome.IsHitTestVisibleInChrome="True">
                         <Button.Content>
@@ -110,7 +110,7 @@
                         Margin="0,0,5,0"
                         Background="Transparent"
                         BorderBrush="Transparent"
-                        Style="{StaticResource TitleBarButtonStyle}"
+                        Style="{StaticResource ResourceKey=ButtonFlatStyle}"
                         ToolTip="Window schließen"
                         WindowChrome.IsHitTestVisibleInChrome="True">
                         <Button.Content>
@@ -129,22 +129,8 @@
             <!--#region Ribbon Menü-->
             <Ribbon
                 x:Name="mainRibbon"
-                Title=""
                 Grid.Row="1"
-                Height="auto"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Top"
-                Background="WhiteSmoke"
-                IsCollapsed="False"
-                IsMinimized="False"
-                KeyboardNavigation.AcceptsReturn="False"
-                KeyboardNavigation.ControlTabNavigation="None"
-                KeyboardNavigation.IsTabStop="False"
-                KeyboardNavigation.TabNavigation="None"
-                MouseOverBackground="LightGray"
-                MouseOverBorderBrush="LightGray"
-                SelectedIndex="0"
-                ShowQuickAccessToolBarOnTop="True">
+                SelectedIndex="0">
 
                 <Ribbon.ApplicationMenu>
                     <RibbonApplicationMenu Label="Home" Visibility="Collapsed">
@@ -202,21 +188,17 @@
             <!--#endregion Ribbon Menü-->
 
             <!--#region Statuszeile-->
-            <StatusBar
-                Grid.Row="2"
-                Height="Auto"
-                Background="Transparent"
-                FontSize="13">
+            <StatusBar Grid.Row="2">
                 <StatusBarItem x:Name="statusBarItemUserDomainName" DockPanel.Dock="Left">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{StaticResource ResourceKey=IconStatusbarUser}" />
-                        <Label x:Name="StatusbarUser" Content="{x:Static localStaticCore:StatusbarContent.User}" />
+                        <Label x:Name="StatusbarUser" Content="{x:Static localStaticCore:StatusbarMainWindow.User}" />
                     </StackPanel>
                 </StatusBarItem>
 
                 <StatusBarItem DockPanel.Dock="Right">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="{x:Static localStaticCore:StatusbarContent.CurrentDate}" />
+                        <Label Content="{x:Static localStaticCore:StatusbarMainWindow.CurrentDate}" />
                         <Label Content="{StaticResource ResourceKey=IconStatusbarCalendar}" />
                     </StackPanel>
                 </StatusBarItem>
@@ -226,7 +208,7 @@
                 <StatusBarItem x:Name="sbiNotification" DockPanel.Dock="Left">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{StaticResource ResourceKey=IconStatusbarNotification}" />
-                        <Label Content="{Binding Path=(localStaticCore:StatusbarContent.Notification)}" />
+                        <Label Content="{Binding Path=(localStaticCore:StatusbarMainWindow.Notification)}" />
                     </StackPanel>
                 </StatusBarItem>
             </StatusBar>

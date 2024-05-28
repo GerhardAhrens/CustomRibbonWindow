@@ -13,7 +13,7 @@
 // </summary>
 //-----------------------------------------------------------------------
 
-namespace EasyPrototypingNET.BaseClass
+namespace CustomRibbonWindow.Core.BaseClass
 {
     using System.ComponentModel;
     using System.Runtime.CompilerServices;

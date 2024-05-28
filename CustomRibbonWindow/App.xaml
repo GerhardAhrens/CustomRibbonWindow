@@ -15,7 +15,8 @@
                 <!--  Alle Styles sammeln und mergen  -->
                 <!--  Lokale Styles  -->
                 <ResourceDictionary Source="Resources\Style\ApplicationCore.xaml" />
-                <ResourceDictionary Source="Resources\Style\GeometryIcon.xaml" />
+                <ResourceDictionary Source="Resources\Style\MainWindowIcon.xaml" />
+                <ResourceDictionary Source="Resources\Style\DialogWindowIcon.xaml" />
 
                 <!--  Externe Styles aus Bibliotheken  -->
             </ResourceDictionary.MergedDictionaries>

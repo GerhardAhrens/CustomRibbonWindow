@@ -62,13 +62,23 @@
 
         private void OnMainWindowLoaded(object sender, RoutedEventArgs e)
         {
-            StatusbarContent.Notification = "Bereit";
+            StatusbarMainWindow.Notification = "Bereit";
+
+            using (UserPreferences userPrefs = new UserPreferences(this))
+            {
+                userPrefs.Load();
+            }
         }
 
         private void OnMainWindowClosing(object sender, CancelEventArgs e)
         {
             if (MessageBox.Show("Programm beenden?", this.Title, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
+                using (UserPreferences userPrefs = new UserPreferences(this))
+                {
+                    userPrefs.Save();
+                }
+
                 e.Cancel = false;
             }
             else

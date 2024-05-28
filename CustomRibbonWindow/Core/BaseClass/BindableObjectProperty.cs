@@ -18,7 +18,6 @@ namespace CustomRibbonWindow.Core.BaseClass
     using System;
     using System.Runtime.CompilerServices;
 
-    using EasyPrototypingNET.BaseClass;
 
     public static class BindableObjectProperty
     {
