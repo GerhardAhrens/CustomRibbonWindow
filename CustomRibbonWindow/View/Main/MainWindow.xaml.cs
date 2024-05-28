@@ -11,6 +11,7 @@
     using CustomizedTitle;
 
     using CustomRibbonWindow.Core;
+    using CustomRibbonWindow.View;
     using CustomRibbonWindow.View.Dialog;
 
     /// <summary>
@@ -35,8 +36,11 @@
             /* Ribbon Menü und Ribbon Button */
             WeakEventManager<Ribbon, RoutedEventArgs>.AddHandler(this.mainRibbon, "Loaded", this.OnRibbonLoaded);
             WeakEventManager<RibbonButton, RoutedEventArgs>.AddHandler(this.BtnExitApplication, "Click", this.OnButtonCloseClick);
+            WeakEventManager<RibbonButton, RoutedEventArgs>.AddHandler(this.BtnHome, "Click", this.OnRibbonButtonAction);
             WeakEventManager<RibbonButton, RoutedEventArgs>.AddHandler(this.BtnMP1, "Click", this.OnRibbonButtonAction);
             WeakEventManager<RibbonButton, RoutedEventArgs>.AddHandler(this.BtnMP2, "Click", this.OnRibbonButtonAction);
+
+            this.BtnHome.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
         }
 
         private void OnRibbonButtonAction(object sender, RoutedEventArgs e)
@@ -44,7 +48,11 @@
             string buttonName = (sender as RibbonButton).Name;
             if (buttonName != null)
             {
-                if (buttonName == nameof(this.BtnMP1))
+                if (buttonName == nameof(this.BtnHome))
+                {
+                    this.mainContent.Content = new HomeCtrl();
+                }
+                else if (buttonName == nameof(this.BtnMP1))
                 {
                     DialogEins dlg = new DialogEins();
                     dlg.Owner = this;

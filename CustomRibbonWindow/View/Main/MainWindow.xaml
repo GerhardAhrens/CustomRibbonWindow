@@ -40,7 +40,8 @@
         CornerRadius="2">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="45" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="35" />
             </Grid.RowDefinitions>
@@ -145,29 +146,25 @@
                     <RibbonGroup Header="Navigation">
                         <RibbonButton
                             x:Name="BtnExitApplication"
-                            Width="Auto"
-                            Height="Auto"
-                            IsEnabled="True"
                             Label="Beenden"
                             LargeImageSource="{StaticResource ResourceKey=DrawApplicationClose}"
                             ToolTip="Programm Beenden, Alt-X" />
+
+                        <RibbonButton
+                            x:Name="BtnHome"
+                            Label="Home"
+                            LargeImageSource="{StaticResource ResourceKey=DrawHome}" />
                     </RibbonGroup>
 
                     <RibbonGroup Header="Bearbeiten">
                         <RibbonButton
                             x:Name="BtnMP1"
-                            Width="Auto"
-                            Height="Auto"
-                            IsEnabled="True"
                             Label="Benutzer"
                             LargeImageSource="{StaticResource ResourceKey=DrawAccount}"
                             ToolTip="Benutzer bearbeiten" />
 
                         <RibbonButton
                             x:Name="BtnMP2"
-                            Width="Auto"
-                            Height="Auto"
-                            IsEnabled="True"
                             Label="Benutzer- gruppe"
                             LargeImageSource="{StaticResource ResourceKey=DrawAccountGroup}"
                             RibbonTwoLineText.HasTwoLines="True"
@@ -187,8 +184,27 @@
             </Ribbon>
             <!--#endregion Ribbon Menü-->
 
+            <!--#region Contentbereich-->
+            <Border
+                Grid.Row="2"
+                Grid.Column="0"
+                BorderBrush="Black"
+                BorderThickness="0,1,0,1">
+                <ContentControl
+                    x:Name="mainContent"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="Silver"
+                    KeyboardNavigation.IsTabStop="False"
+                    KeyboardNavigation.TabNavigation="None"
+                    ScrollViewer.CanContentScroll="True"
+                    VirtualizingPanel.IsVirtualizing="True"
+                    Visibility="Visible" />
+            </Border>
+            <!--#endregion Contentbereich-->
+
             <!--#region Statuszeile-->
-            <StatusBar Grid.Row="2">
+            <StatusBar Grid.Row="3">
                 <StatusBarItem x:Name="statusBarItemUserDomainName" DockPanel.Dock="Left">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{StaticResource ResourceKey=IconStatusbarUser}" />
