@@ -9,7 +9,7 @@
 // <date>27.05.2024 14:24:16</date>
 //
 // <summary>
-// ViewModel Klasse für Dialog 'DialogEins'
+// ViewModel Klasse für Dialog
 // </summary>
 //-----------------------------------------------------------------------
 
@@ -21,7 +21,7 @@ namespace CustomRibbonWindow.ViewModel
     using CustomRibbonWindow.Core;
     using CustomRibbonWindow.Core.BaseClass;
 
-    public class DialogEinsVM
+    public class DialogEinsVM : ViewModelBase
     {
         public DelegateCommand DialogCloseCommand => new DelegateCommand(this.CloseDialog, this.CanCloseDialog);
 
@@ -40,6 +40,7 @@ namespace CustomRibbonWindow.ViewModel
         private void LoadData()
         {
             StatusbarDialog.Notification = "Bereit";
+            base.IsModified = false;
         }
 
         private void CloseDialog(object parameter)
